@@ -1,0 +1,20 @@
+var map = L.map('map', {
+center: [-17.645145768901486, -71.34616364465279],
+zoom: 20,
+minZoom: 10,
+maxZoom: 20,
+maxBounds: [[-17.918,-71.6575], [-17.3704,-71.0192]]
+});
+var basemapOSM = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+attribution: '&copy; <ahref="http://osm.org/copyright"> OpenStreetMap</a> contributor'
+});
+basemapOSM.addTo(map);
+ 
+var colegios = L.tileLayer.wms("http://localhost:8080/geoserver/proyecto_colegios_ilo/wms?", {
+layers: "proyecto_colegios_ilo:colegios", //gisweb:colegios
+format: 'image/png',
+transparent: true,
+version: '1.1.1',
+attribution: "SENCICO"
+});
+colegios.addTo(map);
